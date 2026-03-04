@@ -1,0 +1,239 @@
+.banner {
+    margin: 0 auto;
+    width: 1100px;
+    /* background-color: #fff; */
+}
+
+/* search 搜索栏 */
+.search {
+    display: flex;
+    justify-content: space-between;
+
+    padding-top: 24px;
+    margin-top: 10px;
+    height: 80px;
+    background-color: #fff;
+    border-radius: 6px;
+    /* margin: auto; */
+
+    font-size: 18px;
+    /* color: rgb(163, 165, 167); */
+
+    box-shadow: 1px 1px 1px 0 rgba(79, 78, 78, 0.551);
+}
+
+/* 左边标题 */
+.search h2 {
+    margin-top: -5px;
+    margin-left: 10px;
+    color: black;
+}
+
+/* search右边内容 */
+.search .right ul {
+    display: flex;
+    
+    height: 30px;
+}
+
+.search .right .a,
+.search .right .ab {
+    display: block;
+
+    padding-left: 4px;
+    margin-right: 40px;
+    width: 50px;
+    border: 1px solid rgb(178, 177, 177);
+    background-color: #d1d1d184;
+    border-radius: 15px;
+}
+
+.search .right .ab {
+    /* display: block; */
+    display: flex;
+    width: 60px;
+    color: black;
+}
+
+.search .right .ab i {
+    line-height: 29px;
+}
+
+.search .right ul .relact {
+    position: relative;
+}
+.search .right .abc {
+    display: none;
+
+    position: absolute;
+    width: 50px;
+    margin-left: 3px;
+    padding-left: 6px;
+    background-color: #fff;
+    border-radius: 5px;
+
+    box-shadow: 2px 2px 4px 0px #0000005a;
+}
+
+.search .right .abc a:hover {
+    color: rgb(105, 147, 237);
+}
+
+.search .right ul li:nth-child(2):hover .abc{
+    display: block;
+}
+
+.search .right .ab:hover,
+.search .right .a:hover {
+    background-color: #cbcbcb;
+    /* color: rgb(130, 133, 132); */
+} 
+
+.search .right ul li:nth-child(3) p {
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.search .right ul .right-2 {
+    width: 160px;
+    margin-top: 2px;
+    margin-left: 2px;
+    margin-right: 90px;
+    padding-left: 10px;
+    border: 1px solid #48484874;
+    border-radius: 20px;
+    background-color: #8686862b;
+
+    font-size: 18px;
+    color: #8f8c8c;
+}
+
+.search .right ul .right-2 span {
+    margin-left: 65px;
+}
+
+
+/* matter 题目区域 */
+.matter {
+    height: 300px;
+    margin-top: 9px;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+/* title 区 */
+.matter .title {
+
+    border:1px solid #060606;
+    border-radius: 5px;
+    background-color: #5c77e5;
+
+    color: #ffffff;
+}
+
+.matter .title ol {
+    display: flex;
+}
+
+.matter .title ol li {
+    /* transform: translateY(50%); */
+    padding: 10px 0;
+    margin-right: 30px;
+}
+
+.matter .title ol li:nth-child(1) {
+    transform: translateX(10px);
+}
+.matter .title ol li:nth-child(5) {
+    transform: translateX(600px);
+}
+.matter .title ol li:nth-child(4) {
+    transform: translateX(550px);
+}
+.matter .title ol li:nth-child(3) {
+    transform: translateX(450px);
+}
+.matter .title ol li:nth-child(2) {
+    transform: translateX(20px);
+}
+
+/* 下面的题目区域 */
+.matter ul li {
+    position: relative;
+    display: flex;
+
+    height: 50px;
+    padding-top: 13px;
+    border-bottom: 1px solid #c2c2c2;
+    
+    /* font-size: 15px;
+    font-weight: normal; */
+}
+
+.matter ul h3 {
+    margin-left: 9px;
+
+    font-weight: normal;
+    font-size: 15px;
+    color: #8f8c8c;
+}
+
+.matter ul a {
+    display: block;
+
+    width: 80px;
+    height: 26px;
+    padding-left: 7px;
+    background-color: #89daee;
+    border-radius: 15px;
+
+    transform: translateX(875px);
+}
+.matter ul a:hover {
+    background-color: #0e79e5cd;
+    color: #ffffff;
+
+    box-shadow: 1px 1px 2px 0px #0000005a;
+}
+
+.matter ul h6 {
+    transform: translateX(780px);
+}
+.matter ul h5 {
+    transform: translateX(668px);
+}
+.matter ul h4 {
+    transform: translateX(530px);
+}
+.matter ul h2 {
+    position: absolute;
+    transform: translate(80px,-4px);
+
+    font-size: 20px;
+    font-weight: 500;
+}
+
+/* tail 区域 */
+.tail ul {
+    display: flex;
+    justify-content: flex-end;
+
+    margin-top: 15px;
+}
+
+.tail ul li {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    background-color: #fff;
+    border: 1px solid #8f8c8c;
+    border-radius: 3px;
+
+    line-height: 29px;
+    text-align: center;
+}
+.tail ul li:hover,
+.tail ul li:hover a {
+    background-color: #68bbf2;
+    color: #ffffff;
+}

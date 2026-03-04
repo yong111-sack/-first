@@ -1,0 +1,65 @@
+.banner {
+    width: 900px;
+    height: 500px;
+    margin: 20px auto;
+    background-color: #fff;
+    border-radius: 6px;
+}
+
+
+/* title 区域 */
+.banner .title {
+    display: flex;
+
+    padding: 20px 30px;
+    height: 110px;
+    line-height: 80px;
+    /* border-bottom: 2px solid #a7a5a5; */
+}
+
+.banner .title span {
+    
+    font-size: 80px;
+    color: rgb(136, 137, 138);
+}
+
+.banner .title p {
+    margin-left: 20px;
+    font-size: 20px;
+    color: #b0adad;
+}
+
+/* introduce 区域 */
+.banner .introduce {
+    width: 700px;
+    height: 100px;
+    margin-left: 50px;
+    background-color: #eceaea;
+    border: 1px solid #a29e9e;
+    border-radius: 5px;
+
+    color: #9c9a9a;
+}
+
+
+/* content 区域 */
+.banner .content {
+    margin-top: 50px;
+}
+
+.banner .content ul {
+    display: flex;
+    justify-content: space-around;
+}
+
+.banner .content ul li {
+    width: 300px;
+    height: 100px;
+    text-align: center;
+    line-height: 100px;
+}
+
+.banner .content ul li:nth-child(2) {
+    border-left: 2px solid #bcb9b9;
+    border-right: 2px solid #bcb9b9;
+}

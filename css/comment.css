@@ -1,0 +1,135 @@
+/* 版心 */
+.wrapperheader {
+    margin: 0 auto;
+    width: 1000px;
+    /* background-color: #c06e6e; */
+}
+
+/* body {
+    background-color: #f3f5f7;
+} */
+/* 头部区域 */
+.header {
+    height: 70px;
+    background-color: #ffffff;
+    border-radius: 4px;
+
+    box-shadow: 7px 2px 5px 0 rgba(130, 129, 129, 0.551);
+}
+
+.header .wrapperheader {
+    padding-top: 10px;
+    display: flex;
+}
+
+.logo {
+    width: 150px;
+    height: 60px;
+    /* background-color: #547cec; */
+    background-image: url(../images/logo.png);
+    background-repeat: no-repeat;
+    /* background: pink url(../images/头部标签.png) no-repeat right 10%; */
+}
+
+.header .content {
+
+    display: flex;
+    height: 50px;
+    width: 700px;
+    border: 5px solid #547cec;
+    border-radius: 30px;
+    /* background-color: #b26363; */
+}
+
+.header .content ul {
+    display: flex;
+}
+
+.header .content li {
+    /* display: block; */
+    margin-left: 40px;
+}
+
+.header .content li a {
+    /* display: block; */
+    display: flex;
+
+    line-height: 40px;
+    font-weight: 500;
+
+    /* cursor: pointer; */
+}
+
+.header .content li a span {
+    margin-right: 5px;
+    padding-top: 1px;
+}
+
+/* active 类选择器，表示默认选中的a  */
+.header .content li .active,
+.header .content li a:hover {
+    color: #82dfea;
+    font-weight: 700;
+}
+
+.header .user {
+    position: relative;
+    width: 100px;
+    height: 60px;
+    margin-left: 150px;
+    margin-top: 5px;
+}
+.header .user-1  {
+    /* display: block; */
+    display: flex;
+
+    line-height: 25px;
+    padding-left: 7px;
+    margin-top: 8px;
+    /* margin-left: 5px; */
+    border: 2px solid #d3d3d3;
+    border-radius: 30px;
+    width: 100px;
+
+    font-weight: 500;
+    color: #595959;
+}
+
+.header .user-2 {
+    /* 隐藏 */
+    display: none;
+
+    position: absolute;
+    margin-left: 5px;
+    width: 90px;
+    height: 100px;
+    background-color: #fff;
+    border-radius: 5px;
+
+    box-shadow: 2px 2px 4px 0px #0000005a;
+
+    transition: all 1s;
+}
+
+.header .user-2 li {
+    margin-top: 10px;
+    margin-left: 6px;
+}
+
+.header .user-2 li a:hover {
+    color: #0975f0;
+    /* background-color: #6ed6eb; */
+}
+
+/* 鼠标悬停时显示 */
+.header .user:hover .user-2,
+.header .user .user-2:hover {
+    display: block;
+}
+.header .user:hover .user-1{
+    border: 2px solid #547cec;
+
+    font-weight: 600;
+    color: #547cec;
+}
+

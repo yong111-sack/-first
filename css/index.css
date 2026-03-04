@@ -1,0 +1,246 @@
+/* 首页样式 */
+
+
+/* banner 区域 */
+.wrapper {
+    margin: 0 auto;
+    width: 900px;
+    /* color: #c06e6e; */
+}
+
+.banner {
+    margin-top: 10px;
+    height: 250px;
+    background-color: #77a2ed;
+    border-radius: 5px;
+
+    /* 阴影 */
+    box-shadow: 15px 5px 10px 0 rgba(79, 78, 78, 0.551);
+}
+
+.banner .wrapper {
+    display: flex;
+    /* justify-content: space-around; */
+}
+
+/* 侧导航 */
+.banner .left {
+    /* padding: 3px 10px; */
+    width: 200px;
+    height: 250px;
+    margin-left: 10px;
+    background-color: rgba(85, 84, 84, 0.7);
+    border-radius: 5px;
+}
+
+.banner .left a {
+    display: block;
+    display: flex;
+    justify-content: space-between;
+    height: 60px;
+    line-height: 60px;
+    padding-left: 5px;
+
+    font-size: 16px;
+    color: #ffffff;
+}
+
+.banner .left a:hover {
+    width: 220px;
+    height: 65px;
+    padding-left: 10px;
+    background-color: rgba(72, 71, 71, 1);
+    border-radius: 5px;
+
+    font-size: 19px;
+    font-weight: 700;
+    color: #4ed1ee;
+}
+
+.banner .left li:nth-child(1) {
+    width: 180px;
+    padding-left: 70px;
+    margin-left: 10px;
+    border-bottom: 3px solid #547cec;
+
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 50px;
+    color: #ffffff;
+}
+
+/* 轮播图 */
+.banner .right {
+    position: relative;
+
+    width: 500px;
+    height: 250px;
+    margin-left: 50px;
+    /* background-color: #762a2a; */
+
+    overflow: hidden;
+}
+
+/* 图片 */
+.banner .right img {
+    width: 500px;
+    height: 250px;
+    border-radius: 5px;
+    border: 1px solid #090a0a;
+
+    vertical-align: middle;
+
+
+}
+
+.banner .right ul {
+    display: flex;
+}
+
+/* 箭头 */
+.banner .prev,
+.banner .next {
+    /* 隐藏 */
+    display: none;
+
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 30px;
+    height: 45px;
+    background-color: rgba(34, 33, 33, 0.6);
+
+    color: #ffffff;
+    font-size: 25px;
+    line-height: 38px;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* 鼠标滑倒时要显示 */
+.banner .right:hover .prev,
+.banner .right:hover .next {
+    display: block;
+}
+
+.banner .prev {
+    left: 0;
+    border-radius: 0 50px 50px 0;
+}
+
+.banner .next {
+    right: 0;
+    border-radius: 50px 0 0 50px;
+    /* font-size: 25px; */
+}
+
+/* 圆点 */
+.banner .right ol {
+    display: flex;
+
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 20px;
+
+    background-color: rgba(255, 255, 255, 0.682);
+}
+
+.banner .right ol li {
+    margin: 3px;
+    width: 8px;
+    height: 8px;
+    background-color: rgba(148, 145, 145, 0.361);
+    border-radius: 50%;
+
+    cursor: pointer;
+}
+
+/* 加特殊圆点 */
+.banner .right ol .active {
+    background-color: #555252;
+}
+
+/* 介绍标题区域 */
+.introduce {
+    margin-top: 15px;
+    margin-bottom: 25px;
+    height: 40px;
+    /* background-color: #7dcec8; */
+}
+
+.introduce h2 {
+    font-size: 35px;
+    text-align: center;
+
+    /* font-family: 草书; */
+}
+
+
+/* 启明星创新实验室区域 */
+.qmx,
+.develop,
+.smart,
+.acm {
+    padding-bottom: 20px;
+    padding-top: 5px;
+    background-color: #fff;
+    /* border-radius: 5px; */
+}
+
+.qmx .wrapper,
+.develop .wrapper,
+.smart .wrapper,
+.acm .wrapper {
+
+    /* margin-top: 25px; */
+    height: 300px;
+    background-color: #f8f8f8;
+    border-radius: 15px;
+    border: 2px solid #636060;
+
+    box-shadow: 15px 5px 10px 0 rgba(79, 78, 78, 0.551);
+}
+
+.qmx .head,
+.develop .head,
+.smart .head,
+.acm .head {
+    height: 50px;
+    /* padding-left: 12px; */
+    border-bottom: 4px solid rgba(107, 103, 230, 0.383);
+    /* padding-top: 3px; */
+}
+
+.qmx .head span,
+.develop span,
+.smart span,
+.acm span {
+    display: block;
+
+    margin-top: 10px;
+    margin-left: 10px;
+    /* padding-left: 10px; */
+    width: 250px;
+    height: 35px;
+    background-color: #4a45e8;
+    border-radius: 0 25px 0 25px;
+    text-align: center;
+
+    line-height: 30px;
+    font-size: 22px;
+    font-weight: 400;
+    color: #ffffff;
+}
+
+.qmx .content p,
+.develop p,
+.smart p,
+.acm p {
+    padding-left: 5px;
+    margin-top: 10px;
+
+    font-size: 17px;
+}
