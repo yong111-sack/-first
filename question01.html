@@ -1,0 +1,567 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>OJ Demo - C++（白色主题）</title>
+  <style>
+    :root {
+      --bg: #f6f7fb;
+      --card: #ffffff;
+      --text: #111827;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --shadow: 0 10px 30px rgba(17, 24, 39, .08);
+      --shadow2: 0 6px 16px rgba(17, 24, 39, .06);
+      --accent: #2563eb;
+      --accent2: #16a34a;
+      --danger: #dc2626;
+      --warn: #d97706;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      --r: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--sans);
+      color: var(--text);
+      background:
+        radial-gradient(900px 600px at 12% 10%, rgba(37, 99, 235, .14), transparent 60%),
+        radial-gradient(900px 650px at 85% 18%, rgba(22, 163, 74, .12), transparent 60%),
+        var(--bg);
+      min-height: 100vh;
+    }
+
+    .wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 26px 18px 40px;
+    }
+
+    /* Top */
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(37, 99, 235, .95), rgba(22, 163, 74, .85));
+      box-shadow: 0 14px 26px rgba(37, 99, 235, .18);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .logo::after {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, .55), transparent 55%);
+      transform: rotate(18deg);
+    }
+
+    .title {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      min-width: 0;
+    }
+
+    .title h1 {
+      margin: 0;
+      font-size: 18px;
+      letter-spacing: .2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .title p {
+      margin: 0;
+      font-size: 12px;
+      color: var(--muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .7);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow2);
+      font-size: 13px;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(22, 163, 74, .95);
+      box-shadow: 0 0 0 6px rgba(22, 163, 74, .14);
+    }
+
+    /* Layout */
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 14px;
+    }
+
+    @media (max-width: 980px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .cardHead {
+      padding: 14px 14px 10px;
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(249, 250, 251, 1), rgba(255, 255, 255, 1));
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .cardHead h2 {
+      margin: 0;
+      font-size: 14px;
+      letter-spacing: .2px;
+    }
+
+    .sub {
+      margin: 2px 0 0;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(37, 99, 235, .22);
+      background: rgba(37, 99, 235, .08);
+      color: rgba(37, 99, 235, .92);
+      font-size: 12px;
+      font-family: var(--mono);
+      white-space: nowrap;
+    }
+
+    .cardBody {
+      padding: 14px;
+    }
+
+    /* Problem content */
+    .problemTitle {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: #f9fafb;
+      color: var(--muted);
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .pill strong {
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .kv {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 10px 14px;
+      margin-top: 12px;
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: #fafafa;
+    }
+
+    @media (max-width: 520px) {
+      .kv {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .k {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .v {
+      color: var(--text);
+      font-size: 13px;
+    }
+
+    .monoBox {
+      margin-top: 10px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: #0b1020;
+      color: rgba(255, 255, 255, .9);
+      padding: 12px;
+      font-family: var(--mono);
+      font-size: 13px;
+      white-space: pre-wrap;
+      line-height: 1.55;
+    }
+
+    .tip {
+      margin-top: 10px;
+      padding: 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(217, 119, 6, .25);
+      background: rgba(217, 119, 6, .08);
+      color: rgba(146, 64, 14, .95);
+      font-size: 13px;
+    }
+
+    /* Editor */
+    textarea {
+      width: 100%;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: #fbfbfd;
+      color: var(--text);
+      font-family: var(--mono);
+      font-size: 13px;
+      line-height: 1.55;
+      padding: 12px 12px;
+      outline: none;
+      box-shadow: inset 0 1px 0 rgba(17, 24, 39, .03);
+    }
+
+    textarea:focus {
+      border-color: rgba(37, 99, 235, .55);
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, .14);
+      background: #ffffff;
+    }
+
+    #code {
+      min-height: 420px;
+    }
+
+    #stdin {
+      min-height: 140px;
+    }
+
+    .actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      appearance: none;
+      border: none;
+      cursor: pointer;
+      border-radius: 14px;
+      padding: 12px 14px;
+      font-weight: 700;
+      letter-spacing: .2px;
+      transition: transform .08s ease, filter .12s ease, opacity .12s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      user-select: none;
+    }
+
+    .btn:active {
+      transform: translateY(1px) scale(.99);
+    }
+
+    .btnPrimary {
+      background: linear-gradient(135deg, rgba(37, 99, 235, 1), rgba(37, 99, 235, .82));
+      color: #fff;
+      box-shadow: 0 12px 20px rgba(37, 99, 235, .18);
+    }
+
+    .btnGhost {
+      background: #fff;
+      border: 1px solid var(--border);
+      color: rgba(17, 24, 39, .85);
+    }
+
+    .btn:hover {
+      filter: brightness(1.03);
+    }
+
+    .hint {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .kbd {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: rgba(17, 24, 39, .72);
+      border: 1px solid rgba(17, 24, 39, .12);
+      background: rgba(17, 24, 39, .04);
+      padding: 4px 8px;
+      border-radius: 10px;
+    }
+
+    /* Output */
+    #out {
+      white-space: pre-wrap;
+      background: #0b1020;
+      color: rgba(255, 255, 255, .9);
+      border: 1px solid rgba(17, 24, 39, .12);
+      border-radius: 14px;
+      padding: 12px 12px;
+      min-height: 240px;
+      font-family: var(--mono);
+      font-size: 13px;
+      line-height: 1.55;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .04);
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: #f9fafb;
+      font-size: 12px;
+      color: var(--muted);
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .status .dot {
+      width: 8px;
+      height: 8px;
+      box-shadow: none;
+      background: rgba(37, 99, 235, .95);
+    }
+
+    footer {
+      margin-top: 14px;
+      color: rgba(17, 24, 39, .5);
+      font-size: 12px;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div class="title">
+          <h1>OJ C++ Runner（白色主题）</h1>
+          <p>静态前端 · 通过 Judge0 运行/编译 C++（先跑起来版）</p>
+        </div>
+      </div>
+
+      <div class="chip" title="状态提示">
+        <span class="dot" aria-hidden="true"></span>
+        <span>服务：Judge0 · C++ (GCC 9.2.0, id=54)</span>
+      </div>
+    </div>
+
+    <div class="grid">
+      <!-- Problem -->
+      <section class="card">
+        <div class="cardHead">
+          <div>
+            <div class="problemTitle">
+              <h2 style="margin:0;">题目：A + B</h2>
+              <span class="pill"><strong>难度</strong>：入门</span>
+              <span class="pill"><strong>标签</strong>：输入输出</span>
+            </div>
+            <p class="sub">读取两个整数 a, b，输出它们的和。</p>
+          </div>
+          <span class="badge">OJ DEMO · PROBLEM 1000</span>
+        </div>
+
+        <div class="cardBody">
+          <div class="kv">
+            <div class="k">题目描述</div>
+            <div class="v">
+              给定两个整数 <code>a</code> 和 <code>b</code>，请输出 <code>a + b</code> 的值。
+            </div>
+
+            <div class="k">输入格式</div>
+            <div class="v">
+              一行，包含两个整数 <code>a</code> 和 <code>b</code>，以空格分隔。
+            </div>
+
+            <div class="k">输出格式</div>
+            <div class="v">
+              输出一个整数，表示 <code>a + b</code>。
+            </div>
+
+            <div class="k">数据范围</div>
+            <div class="v">
+              <code>-10^18 ≤ a, b ≤ 10^18</code>
+            </div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px;">
+            <div>
+              <div class="hint" style="font-weight:700;color:#374151;">样例输入</div>
+              <div class="monoBox">2 3</div>
+            </div>
+            <div>
+              <div class="hint" style="font-weight:700;color:#374151;">样例输出</div>
+              <div class="monoBox">5</div>
+            </div>
+          </div>
+
+          <div class="tip">
+            提示：使用 <code>long long</code> 读取数据，注意关闭同步可提升速度（可选）。
+          </div>
+        </div>
+      </section>
+
+      <!-- Code & IO -->
+      <section class="card">
+        <div class="cardHead">
+          <div>
+            <h2 style="margin:0;">提交代码</h2>
+            <p class="sub">只支持 C++，点击“运行”编译并执行（stdin 会传给程序）</p>
+          </div>
+          <div class="status" id="status">
+            <span class="dot" aria-hidden="true"></span>
+            <span>就绪</span>
+          </div>
+        </div>
+
+        <div class="cardBody">
+          <textarea id="code">#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+int main() {
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
+
+  long long a, b;
+  if (!(cin &gt;&gt; a &gt;&gt; b)) return 0;
+  cout &lt;&lt; (a + b);
+  return 0;
+}</textarea>
+
+          <div class="actions">
+            <button id="run" class="btn btnPrimary" type="button" title="运行 (Ctrl+Enter)">
+              ▶ 运行
+            </button>
+
+            <button class="btn btnGhost" type="button" id="fillSample">
+              ⤓ 使用样例输入
+            </button>
+
+            <div class="hint">
+              快捷键：<span class="kbd">Ctrl</span> + <span class="kbd">Enter</span>
+            </div>
+          </div>
+
+          <div style="height:12px"></div>
+
+          <label class="hint" for="stdin" style="font-weight:700;color:#374151;">stdin（输入）</label>
+          <textarea id="stdin" spellcheck="false">2 3</textarea>
+
+          <div style="height:12px"></div>
+
+          <label class="hint" for="out" style="font-weight:700;color:#374151;">结果（输出）</label>
+          <div id="out">点击“运行”查看结果…</div>
+        </div>
+      </section>
+    </div>
+
+    <footer>
+      <div>如果浏览器提示 CORS，请按我之前的 Cloudflare Worker 代理方案接入。</div>
+      <div>下一步可加：题库列表、提交记录、样例对比（AC/WA）。</div>
+    </footer>
+  </div>
+
+  <script>
+    // 小交互：填入样例输入 + 快捷键 + 运行状态提示（不影响你的 app.js）
+    const fillBtn = document.getElementById("fillSample");
+    const stdinEl = document.getElementById("stdin");
+    const runBtn = document.getElementById("run");
+    const statusEl = document.getElementById("status");
+
+    fillBtn?.addEventListener("click", () => {
+      stdinEl.value = "2 3";
+      statusEl.innerHTML = '<span class="dot" aria-hidden="true"></span><span>已填入样例输入</span>';
+    });
+
+    window.addEventListener("keydown", (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key === "Enter") {
+        e.preventDefault();
+        runBtn.click();
+      }
+    });
+
+    runBtn?.addEventListener("click", () => {
+      statusEl.innerHTML = '<span class="dot" aria-hidden="true"></span><span>运行中…</span>';
+    });
+  </script>
+
+  <!-- 你的执行逻辑仍然在 app.js，保持不变 -->
+  <script src="./app.js"></script>
+</body>
+
+</html>
