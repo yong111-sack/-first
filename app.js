@@ -26,7 +26,6 @@ $run.addEventListener("click", async () => {
 
     const data = await res.json();
 
-    // 按优先级显示：编译错误 > 运行错误 > 正常输出
     const status = data?.status?.description ? `状态：${data.status.description}\n` : "";
     const compile = data.compile_output ? `编译输出：\n${data.compile_output}\n` : "";
     const stderr = data.stderr ? `运行错误：\n${data.stderr}\n` : "";

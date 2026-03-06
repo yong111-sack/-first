@@ -4,7 +4,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>OJ Demo - C++（白色主题）</title>
+  <title>启明星oj</title>
+  <link rel="icon" href="./images/启明星图标 (1).png" type="image/x-icon">
+  <link rel="stylesheet" href="./iconfont/iconfont.css">
+  <link rel="stylesheet" href="./css/base.css">
   <style>
     :root {
       --bg: #f6f7fb;
@@ -23,14 +26,10 @@
       --r: 16px;
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
     body {
       margin: 0;
       font-family: var(--sans);
-      color: var(--text);
+      /* color: var(--text); */
       background:
         radial-gradient(900px 600px at 12% 10%, rgba(37, 99, 235, .14), transparent 60%),
         radial-gradient(900px 650px at 85% 18%, rgba(22, 163, 74, .12), transparent 60%),
@@ -256,16 +255,6 @@
       line-height: 1.55;
     }
 
-    .tip {
-      margin-top: 10px;
-      padding: 12px;
-      border-radius: 14px;
-      border: 1px solid rgba(217, 119, 6, .25);
-      background: rgba(217, 119, 6, .08);
-      color: rgba(146, 64, 14, .95);
-      font-size: 13px;
-    }
-
     /* Editor */
     textarea {
       width: 100%;
@@ -406,7 +395,7 @@
 
 <body>
   <div class="wrap">
-    <div class="topbar">
+    <!-- <div class="topbar">
       <div class="brand">
         <div class="logo" aria-hidden="true"></div>
         <div class="title">
@@ -419,7 +408,7 @@
         <span class="dot" aria-hidden="true"></span>
         <span>服务：Judge0 · C++ (GCC 9.2.0, id=54)</span>
       </div>
-    </div>
+    </div> -->
 
     <div class="grid">
       <!-- Problem -->
@@ -470,9 +459,7 @@
             </div>
           </div>
 
-          <div class="tip">
-            提示：使用 <code>long long</code> 读取数据，注意关闭同步可提升速度（可选）。
-          </div>
+
         </div>
       </section>
 
@@ -511,10 +498,6 @@ int main() {
             <button class="btn btnGhost" type="button" id="fillSample">
               ⤓ 使用样例输入
             </button>
-
-            <div class="hint">
-              快捷键：<span class="kbd">Ctrl</span> + <span class="kbd">Enter</span>
-            </div>
           </div>
 
           <div style="height:12px"></div>
@@ -530,37 +513,8 @@ int main() {
       </section>
     </div>
 
-    <footer>
-      <div>如果浏览器提示 CORS，请按我之前的 Cloudflare Worker 代理方案接入。</div>
-      <div>下一步可加：题库列表、提交记录、样例对比（AC/WA）。</div>
-    </footer>
   </div>
 
-  <script>
-    // 小交互：填入样例输入 + 快捷键 + 运行状态提示（不影响你的 app.js）
-    const fillBtn = document.getElementById("fillSample");
-    const stdinEl = document.getElementById("stdin");
-    const runBtn = document.getElementById("run");
-    const statusEl = document.getElementById("status");
-
-    fillBtn?.addEventListener("click", () => {
-      stdinEl.value = "2 3";
-      statusEl.innerHTML = '<span class="dot" aria-hidden="true"></span><span>已填入样例输入</span>';
-    });
-
-    window.addEventListener("keydown", (e) => {
-      if ((e.ctrlKey || e.metaKey) && e.key === "Enter") {
-        e.preventDefault();
-        runBtn.click();
-      }
-    });
-
-    runBtn?.addEventListener("click", () => {
-      statusEl.innerHTML = '<span class="dot" aria-hidden="true"></span><span>运行中…</span>';
-    });
-  </script>
-
-  <!-- 你的执行逻辑仍然在 app.js，保持不变 -->
   <script src="./app.js"></script>
 </body>
 
