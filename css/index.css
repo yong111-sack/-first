@@ -43,18 +43,23 @@
 
     font-size: 16px;
     color: #ffffff;
+
+    transition: transform .3s ease;
 }
 
 .banner .left a:hover {
-    width: 220px;
+    /* width: 220px;
     height: 65px;
-    padding-left: 10px;
-    background-color: rgba(72, 71, 71, 1);
+    padding-left: 10px; */
+    /* background-color: rgba(72, 71, 71, 1); */
     border-radius: 5px;
 
     font-size: 19px;
     font-weight: 700;
     color: #4ed1ee;
+
+    transform: translateY(-2px);
+    /* filter: brightness(1.25); */
 }
 
 .banner .left li:nth-child(1) {

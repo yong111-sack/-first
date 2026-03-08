@@ -390,25 +390,42 @@
       gap: 10px;
       flex-wrap: wrap;
     }
+
+    .backBtn {
+      position: fixed;
+      top: 18px;
+      left: 18px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 12px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+
+      color: #fff;
+      background: linear-gradient(135deg, rgb(55, 112, 236), rgba(37, 99, 235, .85));
+      box-shadow: 0 8px 16px rgba(37, 99, 235, .2);
+
+      transition: transform .08s ease, filter .12s ease;
+    }
+
+
+    .backBtn:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.05);
+    }
+
+    .backBtn:active {
+      transform: scale(.96);
+    }
   </style>
 </head>
 
 <body>
   <div class="wrap">
-    <!-- <div class="topbar">
-      <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
-        <div class="title">
-          <h1>OJ C++ Runner（白色主题）</h1>
-          <p>静态前端 · 通过 Judge0 运行/编译 C++（先跑起来版）</p>
-        </div>
-      </div>
-
-      <div class="chip" title="状态提示">
-        <span class="dot" aria-hidden="true"></span>
-        <span>服务：Judge0 · C++ (GCC 9.2.0, id=54)</span>
-      </div>
-    </div> -->
+    <a href="./question.html" class="backBtn">← 返回</a>
 
     <div class="grid">
       <!-- Problem -->
@@ -468,7 +485,7 @@
         <div class="cardHead">
           <div>
             <h2 style="margin:0;">提交代码</h2>
-            <p class="sub">只支持 C++，点击“运行”编译并执行（stdin 会传给程序）</p>
+            <p class="sub">只支持 C++</p>
           </div>
           <div class="status" id="status">
             <span class="dot" aria-hidden="true"></span>
@@ -494,15 +511,11 @@ int main() {
             <button id="run" class="btn btnPrimary" type="button" title="运行 (Ctrl+Enter)">
               ▶ 运行
             </button>
-
-            <button class="btn btnGhost" type="button" id="fillSample">
-              ⤓ 使用样例输入
-            </button>
           </div>
 
           <div style="height:12px"></div>
 
-          <label class="hint" for="stdin" style="font-weight:700;color:#374151;">stdin（输入）</label>
+          <label class="hint" for="stdin" style="font-weight:700;color:#374151;">输入</label>
           <textarea id="stdin" spellcheck="false">2 3</textarea>
 
           <div style="height:12px"></div>
