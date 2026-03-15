@@ -1,335 +1,264 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN"> <!-- 改为中文更贴合场景 -->
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>启明星oj</title>
+  <title>启明星OJ - 个人主页</title>
   <link rel="icon" href="./images/启明星图标 (1).png" type="image/x-icon">
   <link rel="stylesheet" href="./iconfont/iconfont.css">
-  <link rel="stylesheet" href="./css/base.css">
-  <link rel="stylesheet" href="./css/comment.css">
-  <link rel="stylesheet" href="./css/index.css">
+  <!-- 内嵌美化样式（也可抽离到home.css） -->
   <style>
-    /* 重置全局样式 (base.css 补充) */
+    /* 全局样式重置 */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      list-style: none;
-      text-decoration: none;
+      font-family: "Microsoft Yahei", sans-serif;
     }
 
-    /* 全局字体/背景 */
     body {
-      font-family: "Microsoft Yahei", "PingFang SC", "Helvetica Neue", sans-serif;
-      /* 无衬线字体，现代感 */
       background-color: #f5f7fa;
-      /* 浅灰背景，替代纯白，降低视觉疲劳 */
+      /* 浅灰背景提升层次感 */
       color: #333;
-      /* 统一文字主色 */
-      line-height: 1.6;
-      /* 行高优化，提升可读性 */
     }
 
-    /* 通用版心适配 (替代固定宽度，支持响应式) */
-    .wrapper,
-    .wrapperheader {
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    /* 通用容器 - 居中+宽度限制 */
+    .wrapper {
+      width: 100%;
       max-width: 1200px;
-      /* 最大宽度 */
-      width: 90%;
-      /* 自适应百分比 */
       margin: 0 auto;
+      padding: 0 20px;
     }
 
-    /* 通用圆角/阴影变量 (CSS变量，统一管理) */
-    :root {
-      --radius-sm: 5px;
-      --radius-md: 15px;
-      --radius-lg: 30px;
-      --shadow-soft: 0 4px 12px rgba(79, 78, 78, 0.15);
-      /* 柔和阴影，替代生硬阴影 */
-      --shadow-hover: 0 8px 20px rgba(79, 78, 78, 0.2);
-      --primary-color: #547cec;
-      /* 主色（蓝），统一复用 */
-      --primary-light: #82dfea;
-      /* 浅蓝（交互色） */
-      --bg-card: #fff;
-      /* 卡片背景 */
-    }
-
-    /* comment.css 优化 */
+    /* 头部样式 */
     .header {
-      height: 76px;
-      /* 适度加高，更舒展 */
-      background-color: var(--bg-card);
-      box-shadow: var(--shadow-soft);
-      /* 替换原有生硬阴影 */
+      background-color: #2c3e50;
+      /* 深蓝主色调 */
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
       position: sticky;
-      /* 头部吸顶，提升体验 */
+      /* 头部吸顶 */
       top: 0;
       z-index: 999;
     }
 
-    /* Logo优化 */
+    .wrapperheader {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 70px;
+    }
+
+    /* Logo样式 */
     .logo {
-      width: 150px;
-      height: 60px;
-      background-image: url(./images/logo.png);
-      background-repeat: no-repeat;
-      background-size: contain;
-      /* 自适应Logo大小，避免错位 */
-      background-position: center;
+      width: 48px;
+      height: 48px;
+      background: url("./images/启明星图标 (1).png") center/contain no-repeat;
+      cursor: pointer;
+      transition: transform 0.3s ease;
     }
 
-    /* 导航栏优化 */
-    .header .content {
-      border: 3px solid var(--primary-color);
-      /* 边框减薄，更精致 */
-      border-radius: var(--radius-lg);
-      background-color: rgba(255, 255, 255, 0.9);
-      /* 半透背景，层次感 */
+    .logo:hover {
+      transform: scale(1.05);
+      /* 悬浮缩放 */
     }
 
-    .header .content li a {
+    /* 导航菜单 */
+    .content>ul {
+      display: flex;
+      gap: 30px;
+      /* 菜单间距 */
+    }
+
+    .content>ul>li {
       position: relative;
-      padding: 0 8px;
-      transition: all 0.3s ease;
     }
 
-    /* 导航hover/active 下划线动效 (替代单纯改色) */
-    .header .content li .active::after,
-    .header .content li a:hover::after {
-      content: "";
-      position: absolute;
-      bottom: -5px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80%;
-      height: 2px;
-      background-color: var(--primary-light);
-      border-radius: 1px;
-    }
-
-    /* 个人中心优化 */
-    .header .user-1 {
-      border: 2px solid #e5e7eb;
-      /* 浅灰边框，更柔和 */
-      transition: all 0.3s ease;
-    }
-
-    .header .user:hover .user-1 {
-      border-color: var(--primary-color);
-      background-color: rgba(84, 124, 236, 0.05);
-      /* 浅蓝背景，强化交互 */
-    }
-
-    .header .user-2 {
-      border: 1px solid #e5e7eb;
-      /* 加边框，提升卡片感 */
-    }
-
-    /* index.css 优化 */
-    .banner {
-      margin-top: 20px;
-      /* 增加间距，更舒展 */
-      height: 280px;
-      /* 适度加高，提升视觉占比 */
-      background: linear-gradient(135deg, #77a2ed 0%, #547cec 100%);
-      /* 渐变背景，替代纯色 */
-      border-radius: var(--radius-md);
-      box-shadow: var(--shadow-soft);
-      /* 统一柔和阴影 */
-    }
-
-    /* 侧导航优化 */
-    .banner .left {
-      background-color: rgba(255, 255, 255, 0.15);
-      /* 半透白，适配渐变背景 */
-      backdrop-filter: blur(8px);
-      /* 毛玻璃效果，提升科技感 */
-    }
-
-    .banner .left li:nth-child(1) {
-      border-bottom: 3px solid #fff;
-      /* 白色下划线，更醒目 */
+    .content>ul>li a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       color: #fff;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
     }
 
-    .banner .left a:hover {
-      background-color: rgba(255, 255, 255, 0.2);
-      /* hover背景，强化交互 */
-      transform: translateY(-2px) scale(1.02);
-      /* 轻微缩放+上移，更灵动 */
+    .content>ul>li a:hover {
+      background-color: #34495e;
     }
 
-    /* 轮播图优化 */
-    .banner .right {
-      margin-left: 60px;
-      height: 260px;
-      /* 适配banner高度，留边距 */
-      margin-top: 10px;
-      border-radius: var(--radius-sm);
-      overflow: hidden;
+    .content>ul>li .iconfont {
+      font-size: 20px;
+      margin-bottom: 4px;
     }
 
-    .banner .right img {
-      border: none;
-      /* 去掉黑色边框，更清爽 */
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      /* 图片轻微阴影，提升质感 */
+    .content>ul>li p {
+      font-size: 14px;
     }
 
-    /* 轮播箭头优化 */
-    .banner .prev,
-    .banner .next {
-      width: 36px;
-      height: 50px;
-      line-height: 50px;
-      transition: all 0.3s ease;
-    }
-
-    .banner .prev:hover,
-    .banner .next:hover {
-      background-color: rgba(34, 33, 33, 0.8);
-      /* hover加深，强化点击感 */
-      color: var(--primary-light);
-    }
-
-    /* 轮播圆点优化 */
-    .banner .right ol {
-      padding: 4px 8px;
-    }
-
-    .banner .right ol li {
-      transition: all 0.3s ease;
-    }
-
-    .banner .right ol li:hover {
-      transform: scale(1.2);
-      /* 圆点hover放大 */
-    }
-
-    .banner .right ol .active {
-      background-color: var(--primary-color);
-      /* 激活态用主色，统一风格 */
-      transform: scale(1.2);
-    }
-
-    /* index.css 优化 */
-    .introduce h2 {
-      font-size: 32px;
-      font-weight: 700;
-      color: var(--primary-color);
+    /* 用户中心 */
+    .user {
       position: relative;
-      padding-bottom: 10px;
-      margin-bottom: 20px;
+      color: #fff;
+      cursor: pointer;
     }
 
-    /* 标题下划线 */
-    .introduce h2::after {
-      content: "";
+    .user-1 {
+      display: flex;
+      align-items: center;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
+
+    .user-1:hover {
+      background-color: #34495e;
+    }
+
+    .user-1 .iconfont {
+      font-size: 20px;
+      margin-right: 8px;
+    }
+
+    /* 用户下拉菜单 */
+    .user-2 {
       position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 3px;
-      background: linear-gradient(90deg, #547cec, #82dfea);
-      border-radius: 3px;
-    }
-
-    /* 内容卡片优化 */
-    .qmx .wrapper,
-    .develop .wrapper,
-    .smart .wrapper,
-    .acm .wrapper {
-      height: auto;
-      /* 取消固定高度，自适应内容 */
-      padding: 20px;
-      background-color: var(--bg-card);
-      border: 1px solid #e5e7eb;
-      /* 浅色边框，替代深色 */
-      border-radius: var(--radius-md);
-      box-shadow: var(--shadow-soft);
-      transition: all 0.3s ease;
-      margin-bottom: 30px;
-      /* 增加板块间距 */
-    }
-
-    /* 卡片hover抬升效果 */
-    .qmx .wrapper:hover,
-    .develop .wrapper:hover,
-    .smart .wrapper:hover,
-    .acm .wrapper:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-hover);
-    }
-
-    /* 板块标题优化 */
-    .qmx .head span,
-    .develop .head span,
-    .smart .head span,
-    .acm .head span {
-      background: linear-gradient(90deg, #4a45e8, #547cec);
-      /* 渐变背景 */
-      font-weight: 600;
-      padding: 0 15px;
-      line-height: 40px;
-      height: 40px;
-    }
-
-    /* 内容文字优化 */
-    .qmx .content p,
-    .develop .content p,
-    .smart .content p,
-    .acm .content p {
-      font-size: 16px;
-      color: #444;
-      margin-bottom: 12px;
-      /* 段落间距 */
-      text-indent: 2em;
-      /* 首行缩进，提升排版规范 */
-    }
-
-    /* 最后一个段落取消下间距 */
-    .qmx .content p:last-child,
-    .develop .content p:last-child,
-    .smart .content p:last-child,
-    .acm .content p:last-child {
-      margin-bottom: 0;
-    }
-
-    /* 给介绍板块加渐入动效 */
-    .qmx,
-    .develop,
-    .smart,
-    .acm {
+      top: 100%;
+      right: 0;
+      background-color: #fff;
+      color: #333;
+      width: 150px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
       opacity: 0;
-      transform: translateY(20px);
-      animation: fadeIn 0.8s ease forwards;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 1000;
     }
 
-    .qmx {
-      animation-delay: 0.2s;
+    .user:hover .user-2 {
+      opacity: 1;
+      visibility: visible;
     }
 
-    .develop {
-      animation-delay: 0.4s;
+    .user-2 li a {
+      display: block;
+      padding: 10px 16px;
+      font-size: 14px;
+      transition: background-color 0.3s ease;
     }
 
-    .smart {
-      animation-delay: 0.6s;
+    .user-2 li a:hover {
+      background-color: #f5f7fa;
+      color: #2980b9;
     }
 
-    .acm {
-      animation-delay: 0.8s;
+    /* Banner区域（个人信息卡片） */
+    .banner {
+      margin: 30px auto;
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
     }
 
-    @keyframes fadeIn {
-      to {
-        opacity: 1;
-        transform: translateY(0);
+    /* 个人信息标题 */
+    .banner .title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .banner .title .iconfont {
+      font-size: 32px;
+      color: #2980b9;
+      /* 强调色 */
+    }
+
+    .banner .title p {
+      font-size: 24px;
+      font-weight: 600;
+      color: #2c3e50;
+    }
+
+    /* 个人语录 */
+    .banner .introduce {
+      padding: 10px 0;
+    }
+
+    .banner .introduce p {
+      font-size: 16px;
+      color: #666;
+      line-height: 1.6;
+      font-style: italic;
+    }
+
+    /* 数据统计 */
+    .banner .content ul {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .banner .content ul li {
+      flex: 1;
+      min-width: 120px;
+      padding: 20px;
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .banner .content ul li:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .banner .content ul li::before {
+      content: "";
+      display: block;
+      width: 40px;
+      height: 4px;
+      background-color: #2980b9;
+      margin: 0 auto 10px;
+      border-radius: 2px;
+    }
+
+    /* 响应式适配（手机端） */
+    @media (max-width: 768px) {
+      .wrapperheader {
+        flex-wrap: wrap;
+        height: auto;
+        padding: 10px 0;
+      }
+
+      .content>ul {
+        gap: 15px;
+        margin: 10px 0;
+      }
+
+      .banner .content ul {
+        gap: 15px;
+      }
+
+      .banner {
+        padding: 20px;
       }
     }
   </style>
@@ -338,13 +267,13 @@
 <body>
   <!-- 头部区域 -->
   <div class="header">
-    <div class="wrapperheader">
+    <div class="wrapperheader wrapper">
       <!-- logo -->
       <div class="logo"></div>
       <!-- 内容标签 -->
       <div class="content">
         <ul>
-          <li><a href="./index.html" class="active">
+          <li><a href="./index.html">
               <span class="iconfont icon-home"></span>
               <p>首页</p>
             </a></li>
@@ -383,241 +312,38 @@
             <li><a href="#">退出</a></li>
           </ul>
         </div>
-
       </div>
     </div>
   </div>
 
-  <!-- banner区域 -->
-  <div class="banner">
-    <div class="wrapper">
-      <!-- 侧导航 -->
-      <div class="left">
-        <ul>
-          <li>公告</li>
-          <li><a href="#">
-              <p>入门讲解</p>
-              <span class="iconfont icon-jinru"></span>
-            </a></li>
-          <li><a href="#">
-              <p>刷题讲解</p>
-              <span class="iconfont icon-jinru"></span>
-            </a></li>
-          <li><a href="#">
-              <p>注意事项</p>
-              <span class="iconfont icon-jinru"></span>
-            </a></li>
-        </ul>
-      </div>
-      <!-- 轮播图 -->
-      <div class="right">
-        <!-- 图片 -->
-        <ul>
-          <li><a href="#"><img src="./images/img1.jpg" alt="图片"></a></li>
-          <li><a href="#"><img src="./images/img3.jpg" alt="图片"></a></li>
-          <li><a href="#"><img src="./images/img2.jpg" alt="图片"></a></li>
-        </ul>
-        <!-- 箭头 -->
-        <!-- 上一张 prev -->
-        <a href="#" class="prev">
-          <span class="iconfont icon-fanhui"></span>
-        </a>
-        <!-- 下一张 next -->
-        <a href="#" class="next">
-          <span class="iconfont icon-jinru"></span>
-        </a>
-        <!-- 圆点 -->
-        <ol>
-          <li class="active"></li>
-          <li></li>
-          <li></li>
-        </ol>
-      </div>
+  <!-- banner 区域（个人信息卡片） -->
+  <div class="banner wrapper">
+    <div class="title">
+      <span class="iconfont icon-user-filling"></span>
+      <p>用户名</p>
+    </div>
+
+    <div class="introduce">
+      <p>个人语录：保持热爱，奔赴山海，以代码书写未来</p>
+    </div>
+
+    <div class="content">
+      <ul>
+        <li>
+          <h3>通过题数</h3>
+          <p style="font-size:24px; font-weight:600; color:#2980b9; margin-top:8px;">128</p>
+        </li>
+        <li>
+          <h3>提交总数</h3>
+          <p style="font-size:24px; font-weight:600; color:#2980b9; margin-top:8px;">356</p>
+        </li>
+        <li>
+          <h3>总成绩</h3>
+          <p style="font-size:24px; font-weight:600; color:#2980b9; margin-top:8px;">985</p>
+        </li>
+      </ul>
     </div>
   </div>
-
-  <!-- 介绍标题区域 -->
-  <div class="introduce">
-    <h2>启明星介绍</h2>
-  </div>
-
-  <!-- 启明星创新实验室区域 qmx -->
-  <div class="qmx">
-    <div class="wrapper">
-      <div class="head">
-        <span>启明星创新实验室:</span>
-      </div>
-      <div class="content">
-        <p>
-          三峡大学计算机与信息学院启明星创新实验室，自2009年创立，秉承“创新、实践、合作、共赢”的理念，专注于强化学生的高端实战开发技能与全方位素养。实验室下设开发组、智能组和ACM集训队，自成立至2024年已累计培养团队成员300余人。
-        </p>
-        <p>工作室高度重视学生实践潜能的发掘，积极激励成员勇攀技术前沿，踊跃投身蓝桥杯、工程机器人大赛、睿抗、工创赛及计算机设计大赛等学科竟赛。2020至2024年间，团队累计斩获国家级奖项260余项、省级奖项130余项。
-        </p>
-        <p>
-          为深化创新与实践教育，实验室年度策划系列精品活动，涵盖启明星大讲坛、暑期精英培训、求索杯·新生编程挑战赛、蓝桥杯集训营及“愚人杯”编程大赛等。同时，实验室与知名游戏开发公司吉比特保持着密切的合作关系，为学生搭建更多学习与实践的平台。
-        </p>
-      </div>
-    </div>
-  </div>
-
-  <!-- 开发组区域 develop -->
-  <div class="develop">
-    <div class="wrapper">
-      <div class="head">
-        <span>开发组:</span>
-      </div>
-      <div class="content">
-        <p>
-          开发组深耕网页开发、数据分析、AI应用、游戏研发及算法竞技等前沿领域，近三年竟赛成绩斐然，荣获国家级奖项40余项，省级荣誉超8C万。自2023年以来，成员主持省级大学生创新创业顶目2项，成功对外承接项目6项，合作方包括湖北省人社厅、三峡大学设计院、三峡日报及宜昌二中等单位。
-        </p>
-        <p>
-          学术深造方面，工作室成员多人保研至山东大学、东南大学、西北工业大学、西安电子科技大学、苏州大学等知名985、211高校。就业领域，成员同样表现出众，顺利入职字节跳动、腾讯、深信服科技股份有限公司等行业领军企业，彰显卓越的综合素养与职场竞争力。
-        </p>
-      </div>
-    </div>
-  </div>
-
-  <!-- 智能组区域 smart -->
-  <div class="smart">
-    <div class="wrapper">
-      <div class="head">
-        <span>智能组:</span>
-      </div>
-      <div class="content">
-        <p>
-          智能组专注于硬件创新与计算机底层技术的研究，涵盖嵌入式系统开发、尖端机器人技术、精密PCB设计与IC设计等多个领域。团队自主研发多项作品，如医疗辅助设备、高端智能家居系统及智能机器人等，充分展现其卓越实用性与创新引领力。
-        </p>
-        <p>2021至2024年间，智能组在各大学术竞赛中屡获佳绩，成员代表三峡大学赴北京、西安、吉林、湖南、杭州、嘉兴等地参赛，荣获全国一等奖超20项、二等奖超30项，总计获得国家级以上奖项42人次，省级以上奖项逾100项。
-        </p>
-        <p>
-          此外，智能组成员学业成就斐然，多人保送至上海交通大学、电子科技大学、中国科学院大学、西北工业大学、山东大学、东南大学、西安电子科技大学等名校深造。其余成员亦顺利入职海康威视、开源芯片研究院等领先企业与科研机构，续写职业辉煌。
-        </p>
-      </div>
-    </div>
-  </div>
-
-  <!-- ACM集训队区域 acm -->
-  <div class="acm">
-    <div class="wrapper">
-      <div class="head">
-        <span>ACM集训队:</span>
-      </div>
-      <div class="content">
-        <p>
-          ACM集训队专注于提升学生的编程能力和算法水平，培养创新思维。队员们通过日常训练和算法竞赛锻炼逻辑思维，团队内部经常进行经验分享，促进共同成长。近年来，ACM集训队在编程竞赛中屡获佳绩。过去三年，团队全员参加蓝桥杯比赛，32人获得省级一等奖并晋级国赛，累计获得省级奖项80余项、国家级奖项25余项。在团队天梯赛中，由19名集训队成员组成的CTGU1队荣获国赛团体三等奖，6名队员获国赛个人三等奖。团队成员还在CCPC湖北省赛、ICPC武汉站、CCPC重庆女生赛中获得5项奖牌（2银3铜）。ACM集训队成员同时也重视课内学习和科研，部分成员已发表学术论文。近年来，多名成员获得浙江大学、暨南大学、西安电子科技大学等高校的保研资格，另有成员入职字节跳动、飞鱼科技、中国电信等领先企业。
-        </p>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const banner = document.querySelector('.banner .right');
-      if (!banner) return;
-
-      const ul = banner.querySelector('ul');
-      const slides = Array.from(ul.querySelectorAll('li'));
-      const prev = banner.querySelector('.prev');
-      const next = banner.querySelector('.next');
-      const dotsWrap = banner.querySelector('ol');
-      const dots = Array.from(dotsWrap.querySelectorAll('li'));
-
-      const slideCount = slides.length;
-      if (slideCount === 0) return;
-      const slideWidth = 500;
-
-
-      const firstClone = slides[0].cloneNode(true);
-      const lastClone = slides[slideCount - 1].cloneNode(true);
-      ul.insertBefore(lastClone, slides[0]);
-      ul.appendChild(firstClone);
-
-
-      let index = 1;
-      let isAnimating = false;
-
-      function setTranslateX(i, withTransition = true) {
-        ul.style.transition = withTransition ? 'transform 0.5s ease' : 'none';
-        ul.style.transform = `translateX(${-i * slideWidth}px)`;
-      }
-
-      function setActiveDot(realIndex) {
-        dots.forEach((d, idx) => d.classList.toggle('active', idx === realIndex));
-      }
-
-      function getRealIndex() {
-
-        if (index === 0) return slideCount - 1;
-        if (index === slideCount + 1) return 0;
-        return index - 1;
-      }
-
-
-      setTranslateX(index, false);
-      setActiveDot(0);
-
-      function goTo(newIndex) {
-        if (isAnimating) return;
-        isAnimating = true;
-        index = newIndex;
-        setTranslateX(index, true);
-      }
-
-
-      ul.addEventListener('transitionend', () => {
-        if (index === slideCount + 1) {
-          index = 1;
-          setTranslateX(index, false);
-        }
-
-        if (index === 0) {
-          index = slideCount;
-          setTranslateX(index, false);
-        }
-
-        setActiveDot(getRealIndex());
-        isAnimating = false;
-      });
-
-      prev.addEventListener('click', (e) => {
-        e.preventDefault();
-        goTo(index - 1);
-      });
-
-      next.addEventListener('click', (e) => {
-        e.preventDefault();
-        goTo(index + 1);
-      });
-
-      dots.forEach((dot, dotIndex) => {
-        dot.addEventListener('click', () => {
-          goTo(dotIndex + 1);
-          setActiveDot(dotIndex);
-        });
-      });
-
-      window.addEventListener('resize', () => {
-        setTranslateX(index, false);
-      });
-    });
-
-    // 轮播自动播放 (DOMContentLoaded 内补充)
-    let autoplayTimer = setInterval(() => {
-      goTo(index + 1);
-    }, 3000); // 3秒切换一次
-
-    // 鼠标悬停暂停自动播放
-    banner.addEventListener('mouseenter', () => {
-      clearInterval(autoplayTimer);
-    });
-
-    // 鼠标离开恢复自动播放
-    banner.addEventListener('mouseleave', () => {
-      autoplayTimer = setInterval(() => {
-        goTo(index + 1);
-      }, 3000);
-    });
-  </script>
 </body>
 
 </html>
