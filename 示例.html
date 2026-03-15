@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>启明星oj</title>
+  <link rel="icon" href="./images/启明星图标 (1).png" type="image/x-icon">
+  <link rel="stylesheet" href="./iconfont/iconfont.css">
+
+  <style>
+    /* ========== base.css ========== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    li {
+      list-style: none;
+    }
+
+    body {
+      color: #333;
+      background: linear-gradient(180deg, #eef4ff 0%, #f6f8fc 100%);
+      font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+    }
+
+    a {
+      color: #333;
+      text-decoration: none;
+    }
+
+    /* ========== comment.css ========== */
+    .wrapperheader {
+      margin: 0 auto;
+      width: 1000px;
+    }
+
+    .header {
+      height: 74px;
+      background-color: #ffffff;
+      border-radius: 0 0 12px 12px;
+      box-shadow: 0 8px 24px rgba(84, 124, 236, 0.12);
+    }
+
+    .header .wrapperheader {
+      padding-top: 10px;
+      display: flex;
+      align-items: center;
+    }
+
+    .logo {
+      width: 150px;
+      height: 60px;
+      background-image: url(./images/logo.png);
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: left center;
+    }
+
+    .header .content {
+      display: flex;
+      height: 50px;
+      width: 700px;
+      border: 3px solid #547cec;
+      border-radius: 30px;
+      background: linear-gradient(180deg, #ffffff 0%, #f7faff 100%);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    }
+
+    .header .content ul {
+      display: flex;
+      align-items: center;
+    }
+
+    .header .content li {
+      margin-left: 40px;
+    }
+
+    .header .content li a {
+      display: flex;
+      align-items: center;
+      line-height: 40px;
+      font-weight: 500;
+      transition: all 0.25s ease;
+    }
+
+    .header .content li a span {
+      margin-right: 5px;
+      padding-top: 1px;
+    }
+
+    .header .content li .active,
+    .header .content li a:hover {
+      color: #5aa7ff;
+      font-weight: 700;
+    }
+
+    .header .user {
+      position: relative;
+      width: 100px;
+      height: 60px;
+      margin-left: 150px;
+      margin-top: 5px;
+    }
+
+    .header .user-1 {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      line-height: 25px;
+      margin-top: 8px;
+      border: 2px solid #dbe3f3;
+      border-radius: 30px;
+      width: 110px;
+      height: 38px;
+      font-weight: 500;
+      color: #595959;
+      background-color: #fff;
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+
+    .header .user-2 {
+      display: none;
+      position: absolute;
+      top: 48px;
+      left: 8px;
+      width: 96px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+      overflow: hidden;
+      z-index: 10;
+    }
+
+    .header .user-2 li {
+      margin: 0;
+    }
+
+    .header .user-2 li a {
+      display: block;
+      padding: 10px 12px;
+      transition: all 0.2s ease;
+    }
+
+    .header .user-2 li a:hover {
+      color: #0975f0;
+      background-color: #f3f8ff;
+    }
+
+    .header .user:hover .user-2,
+    .header .user .user-2:hover {
+      display: block;
+    }
+
+    .header .user:hover .user-1 {
+      border: 2px solid #547cec;
+      font-weight: 600;
+      color: #547cec;
+      box-shadow: 0 6px 18px rgba(84, 124, 236, 0.16);
+    }
+
+    /* ========== question.css ========== */
+    .banner {
+      margin: 0 auto;
+      width: 1100px;
+    }
+
+    .search {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+      margin-top: 18px;
+      height: 88px;
+      background: linear-gradient(180deg, #ffffff 0%, #f9fbff 100%);
+      border-radius: 14px;
+      font-size: 18px;
+      box-shadow: 0 10px 28px rgba(92, 119, 229, 0.12);
+    }
+
+    .search h2 {
+      color: #1f2d3d;
+    }
+
+    .search .right ul {
+      display: flex;
+      align-items: center;
+      height: 40px;
+    }
+
+    .search .right .a,
+    .search .right .ab {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 20px;
+      min-width: 64px;
+      height: 36px;
+      padding: 0 14px;
+      border: 1px solid #c8d5f0;
+      background: linear-gradient(180deg, #fdfefe 0%, #edf4ff 100%);
+      border-radius: 18px;
+      color: #3a4a5e;
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+
+    .search .right .ab {
+      gap: 4px;
+      min-width: 74px;
+    }
+
+    .search .right .ab i {
+      line-height: 1;
+    }
+
+    .search .right ul .relact {
+      position: relative;
+    }
+
+    .search .right .abc {
+      display: none;
+      position: absolute;
+      top: 42px;
+      left: 0;
+      width: 70px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+      overflow: hidden;
+      z-index: 10;
+    }
+
+    .search .right .abc li a {
+      display: block;
+      padding: 8px 10px;
+      transition: all 0.2s ease;
+    }
+
+    .search .right .abc a:hover {
+      color: rgb(105, 147, 237);
+      background-color: #f3f8ff;
+    }
+
+    .search .right ul li:nth-child(2):hover .abc {
+      display: block;
+    }
+
+    .search .right .ab:hover,
+    .search .right .a:hover {
+      background: linear-gradient(180deg, #edf4ff 0%, #dbe9ff 100%);
+      color: #366de0;
+      box-shadow: 0 8px 18px rgba(84, 124, 236, 0.16);
+      transform: translateY(-1px);
+    }
+
+    .search .right ul li:nth-child(3) p {
+      font-weight: 700;
+      font-size: 20px;
+    }
+
+    .search .right ul .right-2 {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 180px;
+      height: 38px;
+      margin-left: 6px;
+      margin-right: 20px;
+      padding: 0 14px;
+      border: 1px solid #cdd7ea;
+      border-radius: 20px;
+      background: #f7faff;
+      font-size: 16px;
+      color: #8f8c8c;
+    }
+
+    /* 题目区域 */
+    .matter {
+      min-height: 300px;
+      margin-top: 14px;
+      padding-bottom: 6px;
+      background-color: #fff;
+      border-radius: 14px;
+      box-shadow: 0 10px 28px rgba(92, 119, 229, 0.12);
+      overflow: hidden;
+    }
+
+    .matter .title {
+      border-bottom: 1px solid #dce6fb;
+      background: linear-gradient(90deg, #5c77e5 0%, #6e9cff 100%);
+      color: #ffffff;
+    }
+
+    .matter .title ol {
+      display: flex;
+      height: 52px;
+      align-items: center;
+    }
+
+    .matter .title ol li {
+      margin-right: 30px;
+      font-weight: 600;
+    }
+
+    .matter .title ol li:nth-child(1) {
+      transform: translateX(10px);
+    }
+
+    .matter .title ol li:nth-child(2) {
+      transform: translateX(20px);
+    }
+
+    .matter .title ol li:nth-child(3) {
+      transform: translateX(450px);
+    }
+
+    .matter .title ol li:nth-child(4) {
+      transform: translateX(550px);
+    }
+
+    .matter .title ol li:nth-child(5) {
+      transform: translateX(600px);
+    }
+
+    .matter ul li {
+      position: relative;
+      display: flex;
+      align-items: center;
+      height: 62px;
+      border-bottom: 1px solid #edf1f7;
+      transition: background-color 0.2s ease;
+    }
+
+    .matter ul li:hover {
+      background-color: #f8fbff;
+    }
+
+    .matter ul h3 {
+      margin-left: 12px;
+      font-weight: normal;
+      font-size: 15px;
+      color: #8f8c8c;
+    }
+
+    .matter ul h2 {
+      position: absolute;
+      transform: translate(80px, -2px);
+      font-size: 20px;
+      font-weight: 500;
+      color: #243447;
+    }
+
+    .matter ul h4 {
+      transform: translateX(530px);
+      font-size: 14px;
+      color: #547cec;
+      background-color: #eef4ff;
+      padding: 4px 10px;
+      border-radius: 14px;
+    }
+
+    .matter ul h5 {
+      transform: translateX(668px);
+      color: #666;
+    }
+
+    .matter ul h6 {
+      transform: translateX(780px);
+      color: #666;
+      font-size: 14px;
+    }
+
+    /* 题目操作按钮 */
+    .matter ul a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 96px;
+      height: 34px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #74d0f4 0%, #4f8cff 100%);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      box-shadow: 0 8px 18px rgba(79, 140, 255, 0.24);
+      transform: translateX(850px);
+      transition: transform 0.12s ease, box-shadow 0.2s ease, filter 0.2s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .matter ul a:hover {
+      filter: brightness(1.05);
+      box-shadow: 0 12px 22px rgba(79, 140, 255, 0.3);
+    }
+
+    .matter ul a:active {
+      transform: translateX(850px) scale(0.93);
+      box-shadow: 0 4px 10px rgba(79, 140, 255, 0.2);
+    }
+
+    /* 分页区域 */
+    .tail ul {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 18px;
+    }
+
+    .tail ul li {
+      width: 34px;
+      height: 34px;
+      margin-right: 10px;
+    }
+
+    .tail ul li a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      background-color: #fff;
+      border: 1px solid #cdd7ea;
+      border-radius: 8px;
+      color: #4b5563;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+      transition: all 0.18s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .tail ul li:hover a {
+      background: linear-gradient(180deg, #7ec7ff 0%, #5ba8ff 100%);
+      color: #ffffff;
+      border-color: #5ba8ff;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px rgba(91, 168, 255, 0.24);
+    }
+
+    .tail ul li a:active {
+      transform: scale(0.9);
+    }
+
+
+    /* 新添搜索框 */
+    /* 搜索框容器 */
+    .search-box {
+      position: relative;
+      width: 320px;
+      margin: 20px;
+    }
+
+    /* 输入框样式 */
+    #searchInput {
+      width: 100%;
+      padding: 10px 50px 10px 15px;
+      border: 1px solid #e0e0e0;
+      border-radius: 24px;
+      outline: none;
+      font-size: 14px;
+      transition: border-color 0.2s;
+    }
+
+    /* 输入框聚焦效果 */
+    #searchInput:focus {
+      border-color: #4f8cff;
+    }
+
+    /* 搜索按钮样式 */
+    #searchBtn {
+      position: absolute;
+      right: 6px;
+      top: 50%;
+      transform: translateY(-50%);
+      border: none;
+      background: linear-gradient(135deg, #74d0f4, #4f8cff);
+      color: #fff;
+      padding: 6px 16px;
+      border-radius: 18px;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    /* 搜索结果列表 */
+    .result-list {
+      list-style: none;
+      padding: 0;
+      margin: 8px 0 0;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      max-height: 220px;
+      overflow-y: auto;
+      display: none;
+      /* 默认隐藏 */
+      position: absolute;
+      width: 100%;
+      background: #fff;
+      z-index: 10;
+    }
+
+    /* 结果列表项 */
+    .result-list li {
+      padding: 10px 15px;
+      cursor: pointer;
+      border-bottom: 1px solid #f5f5f5;
+      font-size: 14px;
+    }
+
+    /* 最后一项去掉下边框 */
+    .result-list li:last-child {
+      border-bottom: none;
+    }
+
+    /* 鼠标悬停结果项 */
+    .result-list li:hover {
+      background: #f5f8ff;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 头部区域 -->
+  <div class="header">
+    <div class="wrapperheader">
+      <!-- logo -->
+      <div class="logo"></div>
+
+      <!-- 内容标签 -->
+      <div class="content">
+        <ul>
+          <li><a href="./index.html">
+              <span class="iconfont icon-home"></span>
+              <p>首页</p>
+            </a></li>
+
+          <li><a href="./question.html" class="active">
+              <span class="iconfont icon-file-common"></span>
+              <p>题库</p>
+            </a></li>
+
+          <li><a href="./contest.html">
+              <span class="iconfont icon-bisai"></span>
+              <p>练习&比赛</p>
+            </a></li>
+
+          <li><a href="./status.html">
+              <span class="iconfont icon-shuju"></span>
+              <p>状态</p>
+            </a></li>
+
+          <li><a href="./rank.html">
+              <span class="iconfont icon-chart-bar"></span>
+              <p>排名</p>
+            </a></li>
+        </ul>
+      </div>
+
+      <!-- 个人 -->
+      <div class="user">
+        <div class="user-1">
+          <span class="iconfont icon-user-filling"></span>
+          <p>个人中心</p>
+        </div>
+        <div class="user-2">
+          <ul>
+            <li><a href="./home.html">我的主页</a></li>
+            <li><a href="./setting.html">我的设置</a></li>
+            <li><a href="#">退出</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- banner 区域 -->
+  <div class="banner">
+    <!-- search 搜索栏 -->
+    <div class="search">
+      <h2>启明星在线题库</h2>
+      <div class="right">
+        <ul>
+          <li><a href="#" class="a">标签</a></li>
+          <li class="relact">
+            <div class="ab">
+              <p>难度</p>
+              <i class="iconfont icon-arrow-down"></i>
+            </div>
+            <div class="abc">
+              <ol>
+                <li><a href="#">全部</a></li>
+                <li><a href="#">简单</a></li>
+                <li><a href="#">中等</a></li>
+                <li><a href="#">困难</a></li>
+              </ol>
+            </div>
+          </li>
+          <li>
+            <p>题目名称:</p>
+          </li>
+          <li>
+            <!-- 新添搜索框 -->
+            <div class="search-box">
+              <!-- 搜索输入框 -->
+              <input type="text" id="searchInput" placeholder="输入关键词搜索..." />
+              <!-- 搜索按钮 -->
+              <button id="searchBtn">搜索</button>
+              <!-- 搜索结果展示区 -->
+              <ul id="resultList" class="result-list"></ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- matter 题目区域 -->
+    <div class="matter banner">
+      <div class="title">
+        <ol>
+          <li>编号</li>
+          <li>题目</li>
+          <li>难度</li>
+          <li>通过率</li>
+          <li>挑战人数</li>
+        </ol>
+      </div>
+
+      <ul>
+        <li>
+          <h3>p001</h3>
+          <h2>A+B</h2>
+          <h4>简单</h4>
+          <h5>100%</h5>
+          <h6>1</h6>
+          <a href="./question01.html">开始挑战</a>
+        </li>
+        <li>
+          <h3>p002</h3>
+          <h2>01背包问题</h2>
+          <h4>简单</h4>
+          <h5>100%</h5>
+          <h6>1</h6>
+          <a href="#">开始挑战</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- tail 区域 -->
+  <div class="tail banner">
+    <ul>
+      <li><a href="#">
+          <span class="iconfont icon-arrow-left-bold"></span>
+        </a></li>
+      <li><a href="#">1</a></li>
+      <li><a href="#">
+          <span class="iconfont icon-gengduo"></span>
+        </a></li>
+      <li><a href="#">10</a></li>
+      <li><a href="#">
+          <span class="iconfont icon-arrow-right-bold"></span>
+        </a></li>
+    </ul>
+  </div>
+
+  <script>
+    // 1. 获取DOM元素
+    const searchInput = document.getElementById('searchInput');
+    const searchBtn = document.getElementById('searchBtn');
+    const resultList = document.getElementById('resultList');
+
+    // 2. 防抖函数：避免输入时频繁触发搜索（性能优化）
+    function debounce(func, delay = 300) {
+      let timer = null;
+      return function (...args) {
+        clearTimeout(timer);
+        timer = setTimeout(() => func.apply(this, args), delay);
+      };
+    }
+
+    // 3. 模拟搜索API（实际项目中替换为真实后端接口）
+    async function fetchSearchResults(keyword) {
+      // 模拟网络请求延迟
+      await new Promise(resolve => setTimeout(resolve, 400));
+
+      // 模拟数据（实际项目中从后端获取）
+      const mockData = [
+        'JavaScript 入门教程',
+        'CSS  Flexbox 布局',
+        'HTML5 新特性',
+        'Vue.js 组件开发',
+        'React Hooks 详解',
+        '前端性能优化'
+      ];
+
+      // 过滤匹配关键词的结果
+      return mockData.filter(item =>
+        item.toLowerCase().includes(keyword.toLowerCase())
+      );
+    }
+
+    // 4. 渲染搜索结果到页面
+    function renderResults(results) {
+      resultList.innerHTML = ''; // 清空旧结果
+
+      if (results.length === 0) {
+        resultList.innerHTML = '<li style="color: #999; text-align: center;">暂无匹配结果</li>';
+      } else {
+        results.forEach(text => {
+          const li = document.createElement('li');
+          li.textContent = text;
+
+          // 点击结果项：填充到输入框并隐藏列表
+          li.addEventListener('click', () => {
+            searchInput.value = text;
+            resultList.style.display = 'none';
+            console.log('选中内容：', text); // 可替换为实际业务逻辑
+          });
+
+          resultList.appendChild(li);
+        });
+      }
+
+      resultList.style.display = 'block'; // 显示结果列表
+    }
+
+    // 5. 核心搜索处理函数
+    async function handleSearch() {
+      const keyword = searchInput.value.trim();
+
+      // 关键词为空时隐藏结果列表
+      if (!keyword) {
+        resultList.style.display = 'none';
+        return;
+      }
+
+      // 显示“搜索中”状态
+      resultList.innerHTML = '<li style="color: #999; text-align: center;">搜索中...</li>';
+      resultList.style.display = 'block';
+
+      try {
+        const results = await fetchSearchResults(keyword);
+        renderResults(results);
+      } catch (error) {
+        resultList.innerHTML = '<li style="color: #f44; text-align: center;">搜索失败，请重试</li>';
+        console.error('搜索错误：', error);
+      }
+    }
+
+    // 6. 绑定事件
+    // 输入时实时搜索（加防抖）
+    searchInput.addEventListener('input', debounce(handleSearch));
+    // 点击搜索按钮
+    searchBtn.addEventListener('click', handleSearch);
+    // 按下回车键搜索
+    searchInput.addEventListener('keydown', (e) => e.key === 'Enter' && handleSearch());
+    // 点击页面外部关闭结果列表
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.search-box')) {
+        resultList.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+
+</html>

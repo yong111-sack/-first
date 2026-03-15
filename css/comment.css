@@ -79,7 +79,8 @@
     margin-left: 150px;
     margin-top: 5px;
 }
-.header .user-1  {
+
+.header .user-1 {
     /* display: block; */
     display: flex;
 
@@ -107,7 +108,7 @@
     border-radius: 5px;
 
     box-shadow: 2px 2px 4px 0px #0000005a;
-
+    z-index: 999;
     transition: all 1s;
 }
 
@@ -126,10 +127,10 @@
 .header .user .user-2:hover {
     display: block;
 }
-.header .user:hover .user-1{
+
+.header .user:hover .user-1 {
     border: 2px solid #547cec;
 
     font-weight: 600;
     color: #547cec;
 }
-

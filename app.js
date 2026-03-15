@@ -1,5 +1,4 @@
 const API = "https://ce.judge0.com/submissions/?base64_encoded=false&wait=true";
-// 只支持 C++：用 GCC 9.2.0 (id=54)
 const CPP_LANGUAGE_ID = 54;
 
 const $code = document.getElementById("code");
