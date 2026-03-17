@@ -1,0 +1,205 @@
+.banner {
+    margin: 0 auto;
+    width: 1100px;
+}
+
+.search {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 24px;
+    margin-top: 10px;
+    height: 80px;
+    background-color: #fff;
+    border-radius: 6px;
+    font-size: 18px;
+    box-shadow: 1px 1px 1px 0 rgba(79, 78, 78, 0.551);
+}
+
+.search h2 {
+    margin-top: -5px;
+    margin-left: 10px;
+    color: black;
+}
+
+.search .right ul {
+    display: flex;
+    height: 30px;
+}
+
+.search .right .a,
+.search .right .ab {
+    display: block;
+    padding-left: 4px;
+    margin-right: 40px;
+    width: 50px;
+    border: 1px solid rgba(210, 189, 189, 0.642);
+    background-color: #96afb924;
+    border-radius: 15px;
+}
+
+.search .right .ab {
+    display: flex;
+    width: 60px;
+    color: black;
+}
+
+.search .right .ab i {
+    line-height: 29px;
+}
+
+.search .right ul .relact {
+    position: relative;
+}
+
+.search .right .abc {
+    display: none;
+    z-index: 900;
+    position: absolute;
+    width: 60px;
+    margin-left: 3px;
+    padding-left: 6px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 2px 2px 4px 0px #0000005a;
+}
+
+.search .right .status-list {
+    width: 70px;
+}
+
+.search .right .abc a:hover {
+    color: rgb(105, 147, 237);
+}
+
+.search .right ul li:hover .abc {
+    display: block;
+}
+
+.search .right .ab:hover,
+.search .right .a:hover {
+    background-color: #cbcbcb;
+}
+
+.contest-matter {
+    min-height: 320px;
+    margin-top: 9px;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+.contest-matter .title {
+    border: 1px solid #060606;
+    border-radius: 5px;
+    background-color: #5c77e5;
+    color: #ffffff;
+}
+
+.contest-matter .title ol {
+    display: flex;
+}
+
+.contest-matter .title ol li {
+    padding: 10px 0;
+}
+
+.contest-matter .title ol li:nth-child(1) {
+    margin-left: 20px;
+    width: 360px;
+}
+
+.contest-matter .title ol li:nth-child(2) {
+    width: 330px;
+}
+
+.contest-matter .title ol li:nth-child(3) {
+    width: 160px;
+}
+
+.contest-matter .title ol li:nth-child(4) {
+    width: 140px;
+}
+
+.contest-matter ul li {
+    display: flex;
+    align-items: center;
+    height: 64px;
+    padding: 0 20px;
+    border-bottom: 1px solid #c2c2c2;
+}
+
+.contest-matter ul h2,
+.contest-matter ul h4,
+.contest-matter ul h5 {
+    font-weight: normal;
+    font-size: 16px;
+}
+
+.contest-matter ul h2 {
+    width: 360px;
+    font-size: 20px;
+    font-weight: 500;
+    color: #222;
+}
+
+.contest-matter ul h4 {
+    width: 330px;
+    color: #666;
+}
+
+.contest-matter ul h5 {
+    width: 160px;
+}
+
+.contest-matter ul .running {
+    color: #0c9b43;
+    font-weight: 600;
+}
+
+.contest-matter ul .upcoming {
+    color: #2f73d9;
+    font-weight: 600;
+}
+
+.contest-matter ul .finished {
+    color: #8f8c8c;
+    font-weight: 600;
+}
+
+.contest-matter ul a {
+    display: block;
+    width: 88px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    background: linear-gradient(135deg, #74d0f4 0%, #4f8cff 100%);
+    border-radius: 15px;
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.contest-matter ul a:hover {
+    filter: brightness(1.05);
+}
+
+.tail ul {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 15px;
+}
+
+.tail ul li {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    background-color: #fff;
+    border: 1px solid #8f8c8c;
+    border-radius: 3px;
+    line-height: 29px;
+    text-align: center;
+}
+
+.tail ul li:hover,
+.tail ul li:hover a {
+    background-color: #68bbf2;
+    color: #ffffff;
+}

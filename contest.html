@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,44 +9,37 @@
     <link rel="stylesheet" href="./iconfont/iconfont.css">
     <link rel="stylesheet" href="./css/base.css">
     <link rel="stylesheet" href="./css/comment.css">
-    <link rel="stylesheet" href="./css/contest.css">
+    <link rel="stylesheet" href="./css/contest01.css">
 </head>
+
 <body>
-    <!-- 头部区域 -->
     <div class="header">
         <div class="wrapperheader">
-            <!-- logo -->
             <div class="logo"></div>
-            <!-- 内容标签 -->
             <div class="content">
                 <ul>
                     <li><a href="./index.html">
-                        <span class="iconfont icon-home"></span>
-                        <p>首页</p>
-                    </a></li>
-                    <!-- 题库 question -->
+                            <span class="iconfont icon-home"></span>
+                            <p>首页</p>
+                        </a></li>
                     <li><a href="./question.html">
-                        <span class="iconfont icon-file-common"></span>
-                        <p>题库</p>
-                    </a></li>
-                    <!-- 练习 contest -->
+                            <span class="iconfont icon-file-common"></span>
+                            <p>题库</p>
+                        </a></li>
                     <li><a href="./contest.html" class="active">
-                        <span class="iconfont icon-bisai"></span>
-                        <p>练习&比赛</p>
-                    </a></li>
-                    <!-- 状态 status -->
+                            <span class="iconfont icon-bisai"></span>
+                            <p>练习&比赛</p>
+                        </a></li>
                     <li><a href="./status.html">
-                        <span class="iconfont icon-shuju"></span>
-                        <p>状态</p>
-                    </a></li>
-                    <!-- 排名 rank -->
+                            <span class="iconfont icon-shuju"></span>
+                            <p>状态</p>
+                        </a></li>
                     <li><a href="./rank.html">
-                        <span class="iconfont icon-chart-bar"></span>
-                        <p>排名</p>
-                    </a></li>
+                            <span class="iconfont icon-chart-bar"></span>
+                            <p>排名</p>
+                        </a></li>
                 </ul>
             </div>
-            <!-- 个人 -->
             <div class="user">
                 <div class="user-1">
                     <span class="iconfont icon-user-filling"></span>
@@ -56,39 +50,104 @@
                         <li><a href="./home.html">我的主页</a></li>
                         <li><a href="./setting.html">我的设置</a></li>
                         <li><a href="#">退出</a></li>
-                    </ul>                   
+                    </ul>
                 </div>
-                
             </div>
         </div>
     </div>
 
-    <!-- banner 区域 -->
     <div class="banner">
-        <!-- title 区域 -->
-        <div class="title">
-            <h1>全部练习&比赛</h1>
+        <div class="search">
+            <h2>启明星练习&比赛</h2>
+            <div class="right">
+                <ul>
+                    <li><a href="#" class="a">全部</a></li>
+                    <li class="relact">
+                        <div class="ab">
+                            <p>类型</p>
+                            <i class="iconfont icon-arrow-down"></i>
+                        </div>
+                        <div class="abc">
+                            <ol>
+                                <li><a href="#">全部</a></li>
+                                <li><a href="#">训练赛</a></li>
+                                <li><a href="#">周赛</a></li>
+                                <li><a href="#">月赛</a></li>
+                            </ol>
+                        </div>
+                    </li>
+                    <li class="relact">
+                        <div class="ab status-box">
+                            <p>状态</p>
+                            <i class="iconfont icon-arrow-down"></i>
+                        </div>
+                        <div class="abc status-list">
+                            <ol>
+                                <li><a href="#">全部</a></li>
+                                <li><a href="#">进行中</a></li>
+                                <li><a href="#">未开始</a></li>
+                                <li><a href="#">已结束</a></li>
+                            </ol>
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </div>
 
-        <!-- content 区域 -->
-        <div class="content"></div>
+        <div class="matter banner contest-matter">
+            <div class="title">
+                <ol>
+                    <li>比赛名称</li>
+                    <li>比赛时间</li>
+                    <li>状态</li>
+                    <li>操作</li>
+                </ol>
+            </div>
 
-        <!-- tail 区域 -->
-     <div class="tail banner">
+            <ul>
+                <li>
+                    <h2>启明星新生训练赛（样本）</h2>
+                    <h4>2026-03-20 19:00 - 21:00</h4>
+                    <h5 class="running">进行中</h5>
+                    <a href="#">进入比赛</a>
+                </li>
+                <li>
+                    <h2>启明星周赛 #12</h2>
+                    <h4>2026-03-22 14:00 - 16:00</h4>
+                    <h5 class="upcoming">未开始</h5>
+                    <a href="#">查看详情</a>
+                </li>
+                <li>
+                    <h2>图论专项练习赛</h2>
+                    <h4>2026-03-25 18:30 - 20:30</h4>
+                    <h5 class="upcoming">未开始</h5>
+                    <a href="#">查看详情</a>
+                </li>
+                <li>
+                    <h2>三月算法月赛</h2>
+                    <h4>2026-03-10 19:00 - 22:00</h4>
+                    <h5 class="finished">已结束</h5>
+                    <a href="#">比赛回顾</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="tail banner">
         <ul>
             <li><a href="#">
-                <span class="iconfont icon-arrow-left-bold"></span>
-            </a></li>
+                    <span class="iconfont icon-arrow-left-bold"></span>
+                </a></li>
             <li><a href="#">1</a></li>
             <li><a href="#">
-                <span class="iconfont icon-gengduo"></span>
-            </a></li>
+                    <span class="iconfont icon-gengduo"></span>
+                </a></li>
             <li><a href="#">10</a></li>
             <li><a href="#">
-                <span class="iconfont icon-arrow-right-bold"></span>
-            </a></li>
+                    <span class="iconfont icon-arrow-right-bold"></span>
+                </a></li>
         </ul>
-     </div>
     </div>
 </body>
+
 </html>
