@@ -27,18 +27,31 @@
     font-weight: 500;
 }
 
-.banner .title ul li:nth-child(3) p {
+.banner .title ul li:nth-child(3) {
     transform: translateX(570px);
+}
 
+.banner .title ul .author-input {
     margin-top: 10px;
-    padding-left: 10px;
-    padding-top: 3px;
+    padding: 0 12px;
     width: 200px;
     height: 30px;
     background-color: #d3d2d2ba;
+    border: 1px solid transparent;
     border-radius: 15px;
+    outline: none;
 
+    color: #333333;
+    font-size: 14px;
+}
+
+.banner .title ul .author-input::placeholder {
     color: #929090;
+}
+
+.banner .title ul .author-input:focus {
+    border-color: #34abf0f6;
+    background-color: #ffffff;
 }
 
 

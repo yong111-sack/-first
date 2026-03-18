@@ -98,6 +98,7 @@
                         <div class="search-box">
                             <input type="text" id="searchInput" placeholder="输入关键词搜索..." />
                             <button id="searchBtn">搜索</button>
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -114,8 +115,8 @@
                 </ol>
             </div>
 
-            <ul>
-                <li>
+            <ul id="questionList">
+                <li class="question-item">
                     <h3>p001</h3>
                     <h2>A+B</h2>
                     <h4>简单</h4>
@@ -123,10 +124,18 @@
                     <h6>1</h6>
                     <a href="./question01.html">开始挑战</a>
                 </li>
-                <li>
+                <li class="question-item">
                     <h3>p002</h3>
                     <h2>01背包问题</h2>
                     <h4>简单</h4>
+                    <h5>100%</h5>
+                    <h6>1</h6>
+                    <a href="#">开始挑战</a>
+                </li>
+                <li class="question-item">
+                    <h3>p003</h3>
+                    <h2>小马过河</h2>
+                    <h4>中等</h4>
                     <h5>100%</h5>
                     <h6>1</h6>
                     <a href="#">开始挑战</a>
@@ -151,6 +160,41 @@
                 </a></li>
         </ul>
     </div>
+
+    <script>
+        const searchInput = document.getElementById("searchInput");
+        const searchBtn = document.getElementById("searchBtn");
+        const questionItems = document.querySelectorAll(".question-item");
+
+        function searchQuestions() {
+            const keyword = searchInput.value.trim().toLowerCase();
+
+            questionItems.forEach(item => {
+                const idText = item.querySelector("h3").innerText.toLowerCase();
+                const titleText = item.querySelector("h2").innerText.toLowerCase();
+                const difficultyText = item.querySelector("h4").innerText.toLowerCase();
+
+                if (
+                    idText.includes(keyword) ||
+                    titleText.includes(keyword) ||
+                    difficultyText.includes(keyword)
+                ) {
+                    item.style.display = "flex";
+                } else {
+                    item.style.display = "none";
+                }
+            });
+        }
+
+        searchBtn.addEventListener("click", searchQuestions);
+        searchInput.addEventListener("input", searchQuestions);
+
+        searchInput.addEventListener("keydown", function (e) {
+            if (e.key === "Enter") {
+                searchQuestions();
+            }
+        });
+    </script>
 </body>
 
 </html>
