@@ -162,12 +162,19 @@
     </div>
 
     <script>
-        const searchInput = document.getElementById("searchInput");
-        const searchBtn = document.getElementById("searchBtn");
-        const questionItems = document.querySelectorAll(".question-item");
+        const Input = document.querySelector('#searchInput');
+        // id 类型的用 querySelector  时要带上  #  来引用昂；
+        const Btn = document.querySelector('#searchBtn');
+
+        //const Input = document.getElementById('searchInput');
+        // const Btn = document.getElementById('searchBtn');
+        // getElementById  更适合  id  类型的引入  速度更快
+        const questionItems = document.querySelectorAll('.question-item');
 
         function searchQuestions() {
-            const keyword = searchInput.value.trim().toLowerCase();
+            const keyword = Input.value.trim().toLowerCase();
+            // .value 表示输入框Input中当前的值是多少；.trim() 表示去掉字符串前后多余的空格
+            // .toLowerCase() 表示将输入都换成小写
 
             questionItems.forEach(item => {
                 const idText = item.querySelector("h3").innerText.toLowerCase();
@@ -186,10 +193,10 @@
             });
         }
 
-        searchBtn.addEventListener("click", searchQuestions);
-        searchInput.addEventListener("input", searchQuestions);
+        Btn.addEventListener("click", searchQuestions);
+        Input.addEventListener("input", searchQuestions);
 
-        searchInput.addEventListener("keydown", function (e) {
+        Input.addEventListener("keydown", function (e) {
             if (e.key === "Enter") {
                 searchQuestions();
             }
