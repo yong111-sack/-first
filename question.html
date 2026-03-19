@@ -185,6 +185,7 @@
                     idText.includes(keyword) ||
                     titleText.includes(keyword) ||
                     difficultyText.includes(keyword)
+                    // idText.includes(输入的东西) 表示idText中是否包含“输入的东西”
                 ) {
                     item.style.display = "flex";
                 } else {
@@ -194,6 +195,7 @@
         }
 
         Btn.addEventListener("click", searchQuestions);
+        // addEventListener 表示添加事件监听器，绑定Btn按钮
         Input.addEventListener("input", searchQuestions);
 
         Input.addEventListener("keydown", function (e) {
