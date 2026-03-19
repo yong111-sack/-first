@@ -36,7 +36,7 @@
     display: flex;
     height: 50px;
     width: 700px;
-    border: 5px solid #547cec;
+    border: 5px solid rgba(66, 98, 215, 0.5);
     border-radius: 30px;
     /* background-color: #b26363; */
 }

@@ -111,23 +111,23 @@
                 <dd>
                     <ol>
                         <li>2026-1-25</li>
-                        <li>答案正确</li>
+                        <li class="statu">答案正确</li>
                         <li>p002</li>
                         <li>1ms</li>
                         <li>1MB</li>
                         <li>C++</li>
-                        <li>abc</li>
+                        <li class="users">abc</li>
                     </ol>
                 </dd>
                 <dd>
                     <ol>
                         <li>2026-1-26</li>
-                        <li>答案正确</li>
+                        <li class="statu">答案正确</li>
                         <li>p001</li>
                         <li>1ms</li>
                         <li>1MB</li>
                         <li>C++</li>
-                        <li>abc</li>
+                        <li class="users">abc</li>
                     </ol>
                 </dd>
             </dl>
@@ -150,6 +150,29 @@
             </ul>
         </div>
     </div>
+
+    <script>
+        const input = document.querySelector('.author-input');
+        const contest = document.querySelector('.contest');
+        const result = contest.querySelectorAll('ol');
+
+        function search() {
+            const keyword = input.value.trim().toLowerCase();
+
+            result.forEach(item => {
+                const id = item.querySelector('.users').innerText.toLowerCase();
+                const status = item.querySelector('.statu').innerText.toLowerCase();
+
+                if (
+                    id.includes(keyword) ||
+                    status.includes(keyword)
+                ) {
+                    item.style.display = "flex";
+                }
+            });
+        }
+
+    </script>
 </body>
 
 </html>

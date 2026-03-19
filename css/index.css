@@ -11,11 +11,13 @@
 .banner {
     margin-top: 10px;
     height: 250px;
-    background-color: #77a2ed;
+    /* background-color: #99a1ae; */
+    background: linear-gradient(135deg, #603ed2 0%, #58b7e3 100%);
+
     border-radius: 5px;
 
-    /* 阴影 */
-    box-shadow: 15px 5px 10px 0 rgba(79, 78, 78, 0.551);
+
+    box-shadow: 15px 5px 35px 0 rgba(60, 59, 59, 0.434);
 }
 
 .banner .wrapper {
