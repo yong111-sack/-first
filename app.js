@@ -35,3 +35,4 @@ $run.addEventListener("click", async () => {
     show("请求失败：\n" + (e?.message || String(e)));
   }
 });
+
